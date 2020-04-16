@@ -11,7 +11,7 @@ from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.lex_rank import LexRankSummarizer
 
 def text_analyzer(my_text):
-    nlp = spacy.load('en')
+    nlp = spacy.load("en_core_web_sm")
     docx = nlp(my_text)
 
     # tokens = [tokens.text for token in docx]
@@ -19,7 +19,7 @@ def text_analyzer(my_text):
     return allData
 
 def entity_analyzer(my_text):
-    nlp = spacy.load('en')
+    nlp = spacy.load("en_core_web_sm")
     docx = nlp(my_text)
 
     tokens = [token.text for token in docx]
