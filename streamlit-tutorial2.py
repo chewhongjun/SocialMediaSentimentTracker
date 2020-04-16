@@ -77,7 +77,7 @@ def main():
             else:
                 summary_result = sumy_summerizer(message)
 
-        st.success(summary_result)
+            st.success(summary_result)
 
 
 
