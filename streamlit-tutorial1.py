@@ -80,3 +80,51 @@ firstname = st.text_input("Enter Your Firstname","Type here..")
 if st.button("submit"):
     result = firstname.title()
     st.success(result)
+
+#Text Area
+messsage = st.text_area("Enter Your Firstname","Type here..")
+if st.button("submits"):
+    results = messsage.title()
+    st.success(results)
+
+#Date Time
+import datetime
+today = st.date_input("Today is",datetime.datetime.now())
+
+# Time
+the_time = st.time_input("The time is",datetime.time())
+
+#Displaying Json
+st.text("Displaying Json")
+st.json({'name':"Jesse",'male':"John"})
+
+#Displaying Raw Code
+st.text("Displaying Raw Code")
+st.code("Import numpy as np")
+
+with st.echo():
+    import pandas as pd
+    df = pd.DataFrame()
+
+#Progress Bar
+import time
+
+if(st.checkbox("Show Progress bar")):
+    my_bar = st.progress(0)
+    p=0
+    cnt = 0
+    while p <= 100:
+        my_bar.progress(p+1)
+        time.sleep(0.01)
+        p+=1
+        if(p==100):
+            p=0
+            cnt +=1
+        if cnt == 5:
+            break
+
+#Spinner
+if(st.checkbox("Show spinner")):
+    with st.spinner("Waiting .. "):
+        time.sleep(3)
+    st.success("Finished")
