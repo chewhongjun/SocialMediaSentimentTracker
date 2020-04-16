@@ -81,6 +81,7 @@ streamlit==0.57.3
 sumy==0.8.1
 terminado==0.8.3
 testpath==0.4.4
+textblob==0.15.3
 thinc==7.4.0
 toml==0.10.0
 toolz==0.10.0
