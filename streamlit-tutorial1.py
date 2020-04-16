@@ -128,3 +128,27 @@ if(st.checkbox("Show spinner")):
     with st.spinner("Waiting .. "):
         time.sleep(3)
     st.success("Finished")
+
+#Ballons
+if(st.checkbox("Show balloons")):
+    st.balloons()
+
+#Sidebars
+st.sidebar.header("About")
+st.sidebar.text("This is a StreamLit Tutorial")
+
+#Functions
+@st.cache
+def run_fnc():
+    return range(100)
+
+st.write(run_fnc())
+
+#plot
+st.pyplot()
+
+#Dataframe
+st.dataframe(df)
+
+#Table
+st.table(df)
