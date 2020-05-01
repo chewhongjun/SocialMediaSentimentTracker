@@ -1,6 +1,7 @@
 #core
 import streamlit as st
 import os
+import base64
 
 
 
@@ -47,11 +48,16 @@ def render_entities(rawtext):
 
 #Function to write
 def writetofile(text,filename):
-    with open(os.path.join(".",filename),"w") as f:
+    with open(os.path.join("Store",filename),"w") as f:
         filename = f.write(text)
     return filename
 
-
+# #downloadble via href
+def make_downloadable(filename):
+    readfile = open(os.path.join("Store",filename)).read()
+    b64 = base64.b64encode(readfile.encode()).decode()
+    href = 'Download File File (right-click and save as <some_name>.txt)'.format(b64)
+    return href
 
 def main():
     """Document redactor application"""
@@ -75,11 +81,22 @@ def main():
             st.subheader("Original Text")
             st.write(render_entities(rawtext),unsafe_allow_html=True)
             st.write(result)
-            if(st.radio("Save To File",("Yes","No"))== "Yes"):
+            if(save_option == "Yes"):
                 writetofile(result,file_name)
                 st.info("Saved Result As :: {}".format(file_name))
+                file_to_download = writetofile(result,file_name)
+                st.info("Saved Result As :: {}".format(file_name))
+                d_link = make_downloadable(file_to_download)
+                st.markdown(d_link,unsafe_allow_html=True)
+            
+
     elif choice == "Downloads":
         st.subheader("Downloads List")
+        files = os.listdir(os.path.join('Store'))
+        file_to_download = st.selectbox("Select File To Download",files)
+        st.info("File Name: {}".format(file_to_download))
+        d_link = make_downloadable(file_to_download)
+        st.markdown(d_link,unsafe_allow_html=True)
     
     else:
         st.subheader()
